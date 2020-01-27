@@ -47,7 +47,9 @@ function writePassword() {
   var randNum2 = function(min, max) {
     return Math.floor((Math.random() * (max - min) + min));
   }
-
+  var randNum3 = function () {
+    return Math.floor(Math.random() * 10)
+  }
   if (alphArr) {
     randNum < alphArr.length
   }
@@ -68,6 +70,7 @@ function writePassword() {
   while (passwordJoin.length < psswrdlngth) {
     if (lwerChar == false) {
       passwordJoin.push(multiArr[randNum2(1, 3)][randNum()])
+      + passwordJoin.push(multiArr[3][randNum()])
     } else if (uppChar == false) {
       passwordJoin.push(multiArr[randNum2(2, 3)][randNum()]) 
       + passwordJoin.push(multiArr[0][randNum()])
@@ -77,10 +80,12 @@ function writePassword() {
     } else if (numerChar == false) {
       passwordJoin.push(multiArr[randNum2(0, 2)][randNum()])
     } else {
-      passwordJoin.push(multiArr[randNum2(0, 3)][randNum()])
+      passwordJoin.push(multiArr[randNum2(0, 3)][randNum()]) 
+      + passwordJoin.push(multiArr[3][randNum()])
     }
   }
 
   var getPassword = document.getElementById("password");
   getPassword.innerHTML = passwordJoin.join(" ");
 }
+
