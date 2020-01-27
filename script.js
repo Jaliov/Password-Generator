@@ -5,18 +5,13 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
-
 function writePassword() {
-
   var psswrdlngth = prompt("How many characters long would you like your password")
   if (psswrdlngth < 8 || psswrdlngth > 128) {
     alert("Your password should be between 8 and 128 characters long.")
@@ -27,17 +22,17 @@ function writePassword() {
     var numerChar = confirm("Woud you like numeric characters?");
   }
 
-  var alph = 'abcdefghijklmnopqrstuvwxyz';
   //Arrays
+   //generate lowercase array
+   var alph = 'abcdefghijklmnopqrstuvwxyz';
+   var alphArr = alph.split('')
+ 
   //generate uppercase array
   var alphUpr = alph.toUpperCase().split('').reverse();
 
   //special characters array
   var spclCHARS = ["!", "#", "$", "%", "&", "()", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "`", "{", "|", "}", "~", "]"];
-
-  //generate lowercase array
-  var alphArr = alph.split('')
-
+ 
   //generate number array:
   var nums = [];
   for (var i = 0; i <= 128; i++) {
@@ -49,10 +44,9 @@ function writePassword() {
   var randNum = function () {
     return Math.floor(Math.random() * 20)
   }
-  var randNum2 = function getRandomArbitrary(min, max) {
+  var randNum2 = function(min, max) {
     return Math.floor((Math.random() * (max - min) + min));
   }
-  console.log("THis is randNum :" + randNum() + " This is randNUm " + randNum())
 
   if (alphArr) {
     randNum < alphArr.length
@@ -71,28 +65,21 @@ function writePassword() {
 
   var multiArr = [alphArr, alphUpr, spclCHARS, nums];
 
-  console.log("This is : " + multiArr[0][-1])
-
-
-
-
   while (passwordJoin.length < psswrdlngth) {
-
     if (lwerChar == false) {
       passwordJoin.push(multiArr[randNum2(1, 3)][randNum()])
     } else if (uppChar == false) {
-      passwordJoin.push(multiArr[randNum2(2, 3)][randNum()])
-
+      passwordJoin.push(multiArr[randNum2(2, 3)][randNum()]) 
+      + passwordJoin.push(multiArr[0][randNum()])
     } else if (spclChar == false) {
       passwordJoin.push(multiArr[randNum2(0, 1)][randNum()])
-
+      + passwordJoin.push(multiArr[3][randNum()])
     } else if (numerChar == false) {
       passwordJoin.push(multiArr[randNum2(0, 2)][randNum()])
     } else {
       passwordJoin.push(multiArr[randNum2(0, 3)][randNum()])
     }
   }
-
 
   var getPassword = document.getElementById("password");
   getPassword.innerHTML = passwordJoin.join(" ");
