@@ -78,7 +78,8 @@ function generatePassword() {
     } else if (numerChar == false) {
       passwordJoin.push(multiArr[randNum2(0, 2)][randNum()])
     } else {
-      passwordJoin.push(multiArr[randNum2(0, 3)][randNum()]) 
+      passwordJoin.push(multiArr[randNum2(0, 3)][randNum()]) + 
+      passwordJoin.push(multiArr[3][randNum()]) 
     }
   }
 
