@@ -11,10 +11,11 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-function writePassword() {
+function generatePassword() {
   var psswrdlngth = prompt("How many characters long would you like your password")
   if (psswrdlngth < 8 || psswrdlngth > 128) {
     alert("Your password should be between 8 and 128 characters long.")
+    return "";
   } else {
     var lwerChar = confirm("Would you like lowercase letters?");
     var uppChar = confirm("Would you like uppercase letters?");
@@ -73,9 +74,10 @@ function writePassword() {
       + passwordJoin.push(multiArr[3][randNum()])
     } else if (uppChar == false) {
       passwordJoin.push(multiArr[randNum2(2, 3)][randNum()]) 
-      + passwordJoin.push(multiArr[0][randNum()])
+      + passwordJoin.push(multiArr[0][randNum()]) + 
+      passwordJoin.push(multiArr[3][randNum()])
     } else if (spclChar == false) {
-      passwordJoin.push(multiArr[randNum2(0, 1)][randNum()])
+      passwordJoin.push(multiArr[randNum2(0, 1)][randNum()]) 
       + passwordJoin.push(multiArr[3][randNum()])
     } else if (numerChar == false) {
       passwordJoin.push(multiArr[randNum2(0, 2)][randNum()])
@@ -86,6 +88,6 @@ function writePassword() {
   }
 
   var getPassword = document.getElementById("password");
-  getPassword.innerHTML = passwordJoin.join(" ");
+  return passwordJoin.join("");
 }
 
